@@ -1,0 +1,5 @@
+# Release zips built by tools/package.sh
+dist/
+
+# Python
+__pycache__/

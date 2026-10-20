@@ -1,0 +1,28 @@
+{
+  "description": "Play a sound when Claude finishes a turn and when it is waiting on your permission.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/play-sound.sh\" done",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/play-sound.sh\" needs-input",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

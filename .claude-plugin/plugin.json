@@ -1,0 +1,12 @@
+{
+  "name": "tada",
+  "version": "1.0.0",
+  "description": "Plays a 'ta-da' when Claude Code finishes and a soft chime when it needs your permission. Swap in any sound you like.",
+  "author": {
+    "name": "pjbiz"
+  },
+  "homepage": "https://github.com/pjbiz/claude-tada",
+  "repository": "https://github.com/pjbiz/claude-tada",
+  "license": "MIT",
+  "keywords": ["sound", "notification", "hooks", "chime"]
+}

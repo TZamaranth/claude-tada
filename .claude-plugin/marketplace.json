@@ -1,0 +1,14 @@
+{
+  "name": "tada",
+  "description": "Ta-da sound when Claude Code finishes, soft chime when it needs permission.",
+  "owner": {
+    "name": "pjbiz"
+  },
+  "plugins": [
+    {
+      "name": "tada",
+      "source": ".",
+      "description": "Plays a 'ta-da' when Claude Code finishes and a soft chime when it needs your permission."
+    }
+  ]
+}
