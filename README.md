@@ -6,7 +6,8 @@ while it works.
 - **Ta-da!** when Claude finishes a turn
 - **Hm?** (a soft rising chime) when Claude is waiting on your permission
 
-Works on macOS, Windows and Linux. Swap in any sound file you like.
+31 sounds to choose from, from coin pickups and kazoos to doorbells and owls. Works
+on macOS, Windows and Linux, and you can bring your own sound files too.
 
 ## Install
 
@@ -30,7 +31,7 @@ claude plugin install tada@tada
 
 ### Option 2: download the package
 
-1. Download `tada-v1.0.0.zip` from the [latest release](https://github.com/pjbiz/claude-tada/releases/latest).
+1. Download the `tada-v*.zip` file from the [latest release](https://github.com/pjbiz/claude-tada/releases/latest).
 2. Unzip it somewhere permanent, for example your home folder. You get a `tada` folder.
 3. In Claude Code, add that folder and install:
 
@@ -41,9 +42,41 @@ claude plugin install tada@tada
 
    On Windows, use the full path: `/plugin marketplace add C:\Users\you\tada`.
 
-To try it for one session without installing anything, run `claude --plugin-dir path/to/tada-v1.0.0.zip`.
+To try it for one session without installing anything, run `claude --plugin-dir path/to/tada-v1.1.0.zip`.
 
-## Use your own sounds
+## Pick your sounds
+
+Listen to all of them on the [preview page](https://pjbiz.github.io/claude-tada/docs/),
+or in Claude Code:
+
+```
+/tada:sound                        what plays now, and every sound
+/tada:sound play kazoo             preview one
+/tada:sound done coin              play "coin" when Claude finishes
+/tada:sound needs-input knock      play "knock" when Claude needs permission
+/tada:sound done random            a different sound every time
+/tada:sound needs-input off        silence one event
+/tada:sound something goofy for done
+```
+
+The last one works because Claude reads the list and picks for you.
+
+| Celebratory (for done)                                                                                                                                                                                   | Nudges (for needs-input)                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| tada (default), coin, level-up, power-up, fanfare, marimba, kalimba, harp, ding, doorbell, wind-chimes, sparkle, success, champagne, drumroll, cuckoo, bird, boing, slide-whistle, kazoo, bubbles, robot | hm (default), knock, sonar, blip, huh, glass-tap, triple-beep, tick-tock, owl |
+
+Any sound works for either event. Your choices are saved in `~/.claude/tada.conf`,
+which you can also edit by hand:
+
+```
+done=kazoo
+needs-input=owl
+```
+
+Without Claude, the same tool runs from a terminal:
+`bash <plugin folder>/scripts/tada.sh list | show | play <name> | set <event> <name>`.
+
+## Use your own sound files
 
 Put a file in `~/.claude/sounds/` named after the event:
 
@@ -52,11 +85,11 @@ Put a file in `~/.claude/sounds/` named after the event:
 | Claude finished            | `done.mp3` (or `.wav`, `.m4a`)   |
 | Claude needs your approval | `needs-input.mp3` (same formats) |
 
-Your file wins over the bundled one, and plugin updates leave it alone. Delete it
-to go back to the default. Keep it short (1 to 2 seconds) and use audio you have
-the rights to.
+Your file wins over any choice in `tada.conf`, and plugin updates leave it alone.
+Delete it to go back. Keep it short (1 to 2 seconds) and use audio you have the
+rights to.
 
-On Windows, `~/.claude/sounds/` is `C:\Users\<you>\.claude\sounds\`.
+On Windows, `~/.claude/` is `C:\Users\<you>\.claude\`.
 
 ## Requirements
 
@@ -77,6 +110,8 @@ claude plugin uninstall tada@tada
 ```
 
 Or use `/plugin` in Claude Code and pick the plugin under **Installed**.
+Uninstalling leaves `~/.claude/tada.conf` and `~/.claude/sounds/` in place; delete
+them by hand if you want them gone.
 
 ## How it works
 
@@ -86,18 +121,20 @@ Or use `/plugin` in Claude Code and pick the plugin under **Installed**.
 - `Notification` (matcher `permission_prompt`) runs `scripts/play-sound.sh needs-input`
 
 Both run in the background (`async`), so Claude never waits on the sound.
-`play-sound.sh` looks for your own file first, then the bundled one, and picks the
-player for your OS. On Windows it hands off to `scripts/play-sound.ps1`, which uses
-the built-in Windows media player so `.mp3` and `.m4a` work too.
+`play-sound.sh` picks the file in this order: your own file in `~/.claude/sounds/`,
+then your choice in `~/.claude/tada.conf`, then the default. `play-file.sh` plays it
+with your OS's player. On Windows it hands off to `scripts/play-sound.ps1`, which
+uses the built-in Windows media player so `.mp3` and `.m4a` work too.
 
 ## The sounds
 
-The bundled sounds are not recordings. `tools/make-sounds.py` synthesizes them
-from sine waves using only the Python standard library. To tweak the notes and
-rebuild them:
+The bundled sounds are not recordings. `tools/make-sounds.py` synthesizes every one
+of them from oscillators, filtered noise and a plucked-string model, using only the
+Python standard library. To change a sound or add one, edit that file and rebuild:
 
 ```bash
-python tools/make-sounds.py
+python tools/make-sounds.py     # writes sounds/*.wav and sounds/catalog.tsv
+python tools/make-preview.py    # rebuilds the preview page
 ```
 
 They are released under CC0 (public domain). See [sounds/CREDITS.md](sounds/CREDITS.md).

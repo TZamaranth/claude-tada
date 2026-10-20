@@ -1,0 +1,31 @@
+tada	done	Bell 'ta-da!': a pickup note, then a bright major chord. The default for done.
+coin	done	8-bit coin pickup: two quick chiptune notes.
+level-up	done	Chiptune level-up: a fast rising arpeggio.
+power-up	done	Rising chiptune power-up sweep with a wobble.
+fanfare	done	Brassy 'da-da-daaa!' fanfare.
+marimba	done	Three warm marimba notes going up.
+kalimba	done	Plinky thumb-piano phrase.
+harp	done	Harp glissando sweeping up a pentatonic scale.
+ding	done	One clear desk-bell ding.
+doorbell	done	Classic 'ding-dong' doorbell.
+wind-chimes	done	A breeze through high wind chimes.
+sparkle	done	Magic sparkle: a quick shimmer of falling notes.
+success	done	Soft two-note UI success chime.
+champagne	done	Cork pop, then a fizz.
+drumroll	done	Snare drum roll that lands on a cymbal crash.
+cuckoo	done	Cuckoo-clock call.
+bird	done	Little songbird chirps and a trill.
+boing	done	Cartoon spring 'boing'.
+slide-whistle	done	Goofy slide whistle going up and back down.
+kazoo	done	Kazoo 'ta-daaa!', buzzy and silly.
+bubbles	done	Three bubbly bloops.
+robot	done	Robot 'beep-boop-bop'.
+hm	nudge	Soft rising two-note chime, like a polite 'hm?'. The default for needs-input.
+knock	nudge	Knock knock on a wooden door.
+sonar	nudge	Submarine sonar ping with an echo.
+blip	nudge	Two short, quiet UI blips.
+huh	nudge	Cartoon 'huh?': a voice-like rising question.
+glass-tap	nudge	Two light taps on a glass.
+triple-beep	nudge	Three gentle beeps.
+tick-tock	nudge	A clock going tick-tock, tick-tock.
+owl	nudge	Soft owl 'hoo-hoo'.
