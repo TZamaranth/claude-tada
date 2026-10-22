@@ -529,6 +529,34 @@
         margin: 0 0 6px;
       }
 
+      /* Swapping headline: both lines share one grid cell, so the height never jumps. */
+      .swap {
+        display: grid;
+      }
+      .swap-item {
+        grid-area: 1 / 1;
+        opacity: 0;
+        transform: translateY(0.3em);
+        transition:
+          opacity 420ms ease,
+          transform 420ms ease;
+      }
+      .swap-item.is-shown {
+        opacity: 1;
+        transform: none;
+      }
+      .swap-item.is-leaving {
+        opacity: 0;
+        transform: translateY(-0.3em);
+      }
+      .deck .swap-item {
+        transition-delay: 90ms;
+      }
+      /* The lines differ in length; sit them on the deck so any spare height goes above. */
+      .hero h1 .swap-item {
+        align-self: end;
+      }
+
       .visually-hidden {
         position: absolute;
         width: 1px;
@@ -634,8 +662,31 @@
       <main>
         <section class="hero">
           <div>
-            <h1>Too many Claude sessions?</h1>
-            <p class="deck">Have them bark at you when they're done.</p>
+            <!-- The headline and deck swap between two pairs; screen readers get one steady reading. -->
+            <h1>
+              <span class="visually-hidden"
+                >Too many Claude sessions? Or feeling lonely while coding?</span
+              >
+              <span class="swap" aria-hidden="true">
+                <span class="swap-item is-shown"
+                  >Too many Claude sessions?</span
+                >
+                <span class="swap-item">Feeling lonely while coding?</span>
+              </span>
+            </h1>
+            <p class="deck">
+              <span class="visually-hidden"
+                >Have Claude bark at you when it's done.</span
+              >
+              <span class="swap" aria-hidden="true">
+                <span class="swap-item is-shown"
+                  >Have them bark at you when they're done.</span
+                >
+                <span class="swap-item"
+                  >Have Claude bark at you when it's done.</span
+                >
+              </span>
+            </p>
             <p class="sub">
               tada is a free Claude Code plugin. The moment any session
               finishes, it plays a sound: a bark, a ka&#8209;ching, a
@@ -1188,6 +1239,50 @@
         );
 
       render();
+
+      // Headline swap. It pauses while the pointer is over the hero, stops for good once
+      // someone starts playing the pads, and never runs when reduced motion is asked for.
+      const SWAP_INTERVAL_MS = 3400;
+      const swapGroups = [...document.querySelectorAll(".swap")];
+      const hero = document.querySelector(".hero");
+      let swapIndex = 0;
+      let swapPaused = false;
+      let swapTimer = null;
+
+      function showSwapLine(lineIndex) {
+        swapGroups.forEach((group) =>
+          [...group.children].forEach((item, itemIndex) => {
+            const isLeaving =
+              item.classList.contains("is-shown") && itemIndex !== lineIndex;
+            item.classList.toggle("is-leaving", isLeaving);
+            item.classList.toggle("is-shown", itemIndex === lineIndex);
+          }),
+        );
+      }
+
+      // Once a line has faded out upward, reset it below, unseen, so it rises in next time.
+      swapGroups.forEach((group) =>
+        group.addEventListener("transitionend", (event) => {
+          if (event.target.classList.contains("is-leaving"))
+            event.target.classList.remove("is-leaving");
+        }),
+      );
+
+      function stopSwapping() {
+        clearInterval(swapTimer);
+        swapTimer = null;
+      }
+
+      if (!reduceMotion && swapGroups.length > 0) {
+        swapTimer = setInterval(() => {
+          if (swapPaused) return;
+          swapIndex = (swapIndex + 1) % swapGroups[0].children.length;
+          showSwapLine(swapIndex);
+        }, SWAP_INTERVAL_MS);
+        hero.addEventListener("pointerenter", () => (swapPaused = true));
+        hero.addEventListener("pointerleave", () => (swapPaused = false));
+        padGrid.addEventListener("click", stopSwapping, { once: true });
+      }
 
       // One boot sweep across the pads on load, like hardware powering on.
       if (!reduceMotion) {
