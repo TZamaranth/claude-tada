@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      tada: too many Claude sessions? Have them bark when they're done
+    </title>
+    <meta
+      name="description"
+      content="A free Claude Code plugin for people running several sessions at once. Each session plays a sound the moment it finishes, and a different one when it stops for your permission. 65 public-domain sounds."
+    />
+    <meta
+      property="og:title"
+      content="Too many Claude sessions? Have them bark at you when they're done."
+    />
+    <meta
+      property="og:description"
+      content="A free Claude Code plugin that plays a sound the moment any session finishes, and a different one when a session is waiting on your permission."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pjbiz.github.io/claude-tada/" />
+    <meta
+      property="og:image"
+      content="https://pjbiz.github.io/claude-tada/assets/social-preview.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --page: #e4e8e8;
+        --ink: #1f2a30;
+        --muted: #4c5a61;
+        --body: #b9c4c8;
+        --body-light: #cdd6d9;
+        --body-edge: #93a0a6;
+        --pad: #dfe4e5;
+        --pad-edge: #a9b4b8;
+        --lcd: #b8c79e;
+        --lcd-ink: #24301a;
+        --synth: #f0a433;
+        --recording: #ef6a4c;
+        --voice: #5bb0e0;
+        --focus: #1f5fd1;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family: "Archivo", system-ui, sans-serif;
+        font-size: 17px;
+        line-height: 1.55;
+        font-variation-settings: "wdth" 100;
+      }
+      a {
+        color: var(--ink);
+        text-underline-offset: 3px;
+      }
+      :focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 2px;
+      }
+
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      /* Header */
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 0;
+        gap: 16px;
+      }
+      .wordmark {
+        font-weight: 800;
+        font-size: 1.5rem;
+        letter-spacing: -0.01em;
+        font-variation-settings: "wdth" 125;
+        text-decoration: none;
+      }
+      .top nav {
+        display: flex;
+        gap: 20px;
+        font-size: 0.95rem;
+      }
+
+      /* Hero */
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        gap: 56px;
+        align-items: center;
+        padding: 32px 0 72px;
+      }
+      .hero .deck {
+        font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+        line-height: 1.2;
+        font-weight: 650;
+        font-variation-settings: "wdth" 100;
+        text-wrap: balance;
+        margin: 0 0 18px;
+      }
+      .bark-button {
+        font:
+          600 0.95rem "Archivo",
+          sans-serif;
+        color: var(--ink);
+        background: var(--recording);
+        border: 1px solid #c4553c;
+        border-bottom-width: 3px;
+        border-radius: 8px;
+        padding: 8px 16px;
+        margin: 0 0 24px;
+        cursor: pointer;
+      }
+      .bark-button:active {
+        border-bottom-width: 1px;
+        transform: translateY(2px);
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 4.4vw, 3.7rem);
+        text-wrap: balance;
+        line-height: 0.98;
+        margin: 0 0 14px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-variation-settings: "wdth" 112;
+      }
+      .hero p.sub {
+        margin: 0 0 28px;
+        max-width: 34em;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
+
+      .install {
+        background: var(--ink);
+        color: #eef3f2;
+        border-radius: 10px;
+        padding: 16px 18px;
+      }
+      .install pre {
+        margin: 0;
+        font-family: "VT323", monospace;
+        font-size: 1.3rem;
+        line-height: 1.35;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .install-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        color: #b9c6c9;
+      }
+      .install button {
+        font:
+          600 0.85rem "Archivo",
+          sans-serif;
+        color: var(--ink);
+        background: #eef3f2;
+        border: 0;
+        border-radius: 6px;
+        padding: 5px 12px;
+        cursor: pointer;
+      }
+      .install-note {
+        margin: 12px 0 0;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+      .points {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 40px;
+        max-width: 64em;
+      }
+      .points b {
+        font-weight: 700;
+      }
+      .install-links {
+        display: flex;
+        gap: 22px;
+        margin-top: 16px;
+        font-size: 0.95rem;
+        flex-wrap: wrap;
+      }
+
+      /* The device */
+      .device {
+        background: linear-gradient(
+          180deg,
+          var(--body-light),
+          var(--body) 18%,
+          var(--body) 100%
+        );
+        border: 1px solid var(--body-edge);
+        border-radius: 22px;
+        padding: 22px;
+        box-shadow:
+          0 1px 0 #fff inset,
+          0 -3px 0 rgba(0, 0, 0, 0.08) inset,
+          0 24px 40px -24px rgba(31, 42, 48, 0.45);
+      }
+      .device-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 16px;
+        align-items: stretch;
+        margin-bottom: 18px;
+      }
+      .lcd {
+        background: var(--lcd);
+        color: var(--lcd-ink);
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-family: "VT323", monospace;
+        font-size: 1.25rem;
+        line-height: 1.15;
+        box-shadow: inset 0 2px 6px rgba(36, 48, 26, 0.35);
+        min-height: 118px;
+        overflow: hidden;
+      }
+      .lcd .lcd-meta {
+        display: flex;
+        justify-content: space-between;
+        opacity: 0.75;
+      }
+      .lcd .lcd-name {
+        font-size: 2.1rem;
+        line-height: 1.05;
+        margin: 2px 0;
+        overflow-wrap: anywhere;
+      }
+      .lcd .lcd-desc {
+        min-height: 1.2em;
+      }
+      .lcd .lcd-command {
+        margin-top: 4px;
+        overflow-wrap: anywhere;
+      }
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .control-label {
+        font-size: 0.72rem;
+        color: var(--muted);
+        font-variation-settings: "wdth" 125;
+        letter-spacing: 0.02em;
+      }
+      .key-button {
+        font:
+          600 0.82rem "Archivo",
+          sans-serif;
+        font-variation-settings: "wdth" 115;
+        color: var(--ink);
+        background: var(--pad);
+        border: 1px solid var(--pad-edge);
+        border-bottom-width: 3px;
+        border-radius: 7px;
+        padding: 6px 10px;
+        cursor: pointer;
+        min-height: 34px;
+      }
+      .key-button:active {
+        border-bottom-width: 1px;
+        transform: translateY(2px);
+      }
+      .key-button[aria-pressed="true"] {
+        background: var(--ink);
+        color: #eef3f2;
+        border-color: var(--ink);
+      }
+      .copy-command {
+        width: 100%;
+      }
+
+      .banks {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+      .banks .control-label {
+        margin-right: 4px;
+      }
+      .bank-swatch {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 6px;
+        vertical-align: 1px;
+      }
+      .page-switch {
+        margin-left: auto;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .pads {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .pad {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        background: var(--pad);
+        border: 1px solid var(--pad-edge);
+        border-radius: 12px;
+        box-shadow:
+          0 4px 0 var(--pad-edge),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        color: var(--ink);
+        font:
+          600 0.82rem/1.15 "Archivo",
+          sans-serif;
+        font-variation-settings: "wdth" 90;
+        padding: 10px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        transition:
+          background-color 90ms ease-out,
+          box-shadow 90ms ease-out,
+          transform 60ms ease-out;
+        overflow: hidden;
+      }
+      .pad:active {
+        transform: translateY(3px);
+        box-shadow:
+          0 1px 0 var(--pad-edge),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+      .pad .pad-name {
+        overflow-wrap: anywhere;
+      }
+      .pad .pad-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .pad .pad-key {
+        font-size: 0.72rem;
+        color: var(--muted);
+        font-variation-settings: "wdth" 125;
+      }
+      .pad .pad-kind {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        border: 2px solid var(--muted);
+      }
+      .pad[data-kind="done"] .pad-kind {
+        background: var(--muted);
+      }
+      .pad.lit {
+        background: var(--lit, var(--synth));
+        box-shadow:
+          0 4px 0 var(--pad-edge),
+          0 0 22px var(--lit, var(--synth)),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+      .pad.lit .pad-key {
+        color: var(--ink);
+      }
+      .pad.lit .pad-kind {
+        border-color: var(--ink);
+      }
+      .pad.lit[data-kind="done"] .pad-kind {
+        background: var(--ink);
+      }
+      .pad:disabled {
+        cursor: default;
+        background: #ccd4d7;
+        box-shadow: inset 0 2px 4px rgba(31, 42, 48, 0.15);
+        border-color: #b3bdc1;
+        color: var(--muted);
+      }
+      .pad.locked {
+        border-style: dashed;
+      }
+      .pad.booting {
+        background: var(--lit);
+      }
+
+      .device-foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 18px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .legend {
+        display: flex;
+        gap: 16px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        font-variation-settings: "wdth" 115;
+      }
+      .legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .legend i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        border: 2px solid var(--muted);
+        display: inline-block;
+      }
+      .legend i.filled {
+        background: var(--muted);
+      }
+      .device-note {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin: 14px 2px 0;
+      }
+
+      /* Quiet sections */
+      .section {
+        padding: 56px 0;
+        border-top: 1px solid #c8cfd1;
+      }
+      .section h2 {
+        font-size: 1.6rem;
+        font-weight: 750;
+        margin: 0 0 18px;
+        letter-spacing: -0.01em;
+        font-variation-settings: "wdth" 112;
+      }
+      .section p {
+        max-width: 38em;
+      }
+      .two-up {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px;
+      }
+      .commands {
+        margin: 0;
+        display: grid;
+        grid-template-columns: max-content minmax(0, 1fr);
+        gap: 10px 24px;
+      }
+      .commands dt {
+        font-family: "VT323", monospace;
+        font-size: 1.3rem;
+        line-height: 1.3;
+      }
+      .commands dd {
+        margin: 0;
+        color: var(--muted);
+        align-self: center;
+      }
+      .flow {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+      .flow li {
+        display: grid;
+        grid-template-columns: 9em minmax(0, 1fr);
+        gap: 16px;
+      }
+      .flow b {
+        font-weight: 700;
+      }
+      code.inline {
+        font-family: "VT323", monospace;
+        font-size: 1.15em;
+        background: #d4dbdd;
+        padding: 0 5px;
+        border-radius: 4px;
+      }
+
+      .steps {
+        margin: 0 0 16px;
+        padding-left: 1.4em;
+        max-width: 40em;
+        display: grid;
+        gap: 10px;
+      }
+      .aside {
+        color: var(--muted);
+      }
+      footer {
+        padding: 40px 0 56px;
+        border-top: 1px solid #c8cfd1;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      footer p {
+        margin: 0 0 6px;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+
+      @media (max-width: 920px) {
+        .hero {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 36px;
+          padding-top: 12px;
+        }
+        .two-up,
+        .points {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 28px;
+        }
+      }
+      @media (max-width: 560px) {
+        body {
+          font-size: 16px;
+        }
+        .top nav {
+          gap: 14px;
+          font-size: 0.9rem;
+        }
+        .device {
+          padding: 14px;
+          border-radius: 16px;
+        }
+        .device-head {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .controls {
+          flex-direction: row;
+        }
+        .copy-command {
+          width: auto;
+          flex: 1;
+        }
+        .lcd {
+          min-height: 0;
+        }
+        .lcd .lcd-name {
+          font-size: 1.7rem;
+        }
+        .pads {
+          gap: 8px;
+        }
+        .pad {
+          padding: 7px;
+          font-size: 0.72rem;
+          border-radius: 9px;
+        }
+        .page-switch {
+          margin-left: 0;
+        }
+        .commands {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 2px;
+        }
+        .commands dd {
+          margin-bottom: 10px;
+        }
+        .flow li {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 2px;
+        }
+      }
+      @media (hover: none) {
+        .pad .pad-key {
+          visibility: hidden;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .pad,
+        .key-button {
+          transition: none;
+        }
+        .pad:active,
+        .key-button:active,
+        .bark-button:active {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <a class="wordmark" href="#">tada</a>
+        <nav aria-label="Project links">
+          <a href="https://github.com/pjbiz/claude-tada">GitHub</a>
+          <a href="https://github.com/pjbiz/claude-tada/releases/latest"
+            >Download the zip</a
+          >
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <h1>Too many Claude sessions?</h1>
+            <p class="deck">Have them bark at you when they're done.</p>
+            <p class="sub">
+              tada is a free Claude Code plugin. The moment any session
+              finishes, it plays a sound: a bark, a ka&#8209;ching, a
+              ta&#8209;da, 65 to pick from or your own. When a session stops to
+              ask for permission, you hear a different one, so it doesn't sit
+              blocked while you're in another window.
+            </p>
+            <button type="button" class="bark-button" id="play-bark">
+              Hear it bark
+            </button>
+            <div class="install">
+              <div class="install-row">
+                <span>Run in Claude Code</span>
+                <button type="button" id="copy-install">Copy</button>
+              </div>
+              <pre id="install-commands">
+/plugin marketplace add pjbiz/claude-tada
+/plugin install tada@tada</pre>
+            </div>
+            <p class="install-note">
+              Install it once and every session plays it, in every terminal and
+              every project.
+            </p>
+            <div class="install-links">
+              <a href="https://github.com/pjbiz/claude-tada/releases/latest"
+                >Download the zip</a
+              >
+              <a href="https://github.com/pjbiz/claude-tada">Read the source</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="device" id="device">
+              <div class="device-head">
+                <div class="lcd" aria-live="polite">
+                  <div class="lcd-meta">
+                    <span id="lcd-bank">synth 1/2</span
+                    ><span id="lcd-event">done</span>
+                  </div>
+                  <div class="lcd-name" id="lcd-name">tada</div>
+                  <div class="lcd-desc" id="lcd-desc">
+                    Press a pad, or a key on your keyboard.
+                  </div>
+                  <div class="lcd-command" id="lcd-command">
+                    /tada:sound done tada
+                  </div>
+                </div>
+                <div class="controls">
+                  <button type="button" class="key-button" id="random-pad">
+                    random
+                  </button>
+                  <button type="button" class="key-button" id="stop-pad">
+                    stop
+                  </button>
+                  <button
+                    type="button"
+                    class="key-button copy-command"
+                    id="copy-command"
+                  >
+                    copy command
+                  </button>
+                </div>
+              </div>
+
+              <div class="banks" role="group" aria-label="Sound banks">
+                <span class="control-label">bank</span>
+                <button
+                  type="button"
+                  class="key-button"
+                  data-bank="synth"
+                  aria-pressed="true"
+                >
+                  <span
+                    class="bank-swatch"
+                    style="background: var(--synth)"
+                  ></span
+                  >synth
+                </button>
+                <button
+                  type="button"
+                  class="key-button"
+                  data-bank="recording"
+                  aria-pressed="false"
+                >
+                  <span
+                    class="bank-swatch"
+                    style="background: var(--recording)"
+                  ></span
+                  >real world
+                </button>
+                <button
+                  type="button"
+                  class="key-button"
+                  data-bank="voice"
+                  aria-pressed="false"
+                >
+                  <span
+                    class="bank-swatch"
+                    style="background: var(--voice)"
+                  ></span
+                  >voices
+                </button>
+                <button
+                  type="button"
+                  class="key-button"
+                  data-bank="yours"
+                  aria-pressed="false"
+                >
+                  <span
+                    class="bank-swatch"
+                    style="
+                      background: transparent;
+                      border: 1px dashed var(--muted);
+                    "
+                  ></span
+                  >yours
+                </button>
+                <div class="page-switch" role="group" aria-label="Bank page">
+                  <span class="control-label">page</span>
+                  <button
+                    type="button"
+                    class="key-button"
+                    data-page="0"
+                    aria-pressed="true"
+                  >
+                    1
+                  </button>
+                  <button
+                    type="button"
+                    class="key-button"
+                    data-page="1"
+                    aria-pressed="false"
+                  >
+                    2
+                  </button>
+                </div>
+              </div>
+
+              <div class="pads" id="pads"></div>
+
+              <div class="device-foot">
+                <div class="legend" aria-hidden="true">
+                  <span><i class="filled"></i>suggested for done</span>
+                  <span><i></i>suggested for needs input</span>
+                </div>
+              </div>
+            </div>
+            <p class="device-note" id="device-note">
+              All 65 sounds are on the pads. Keys 1–4, Q–R, A–F and Z–V play
+              them too.
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Made for parallel sessions</h2>
+          <ul class="points">
+            <li>
+              <b>Nothing sits blocked.</b> A session waiting on a permission
+              prompt does nothing until you notice it. tada makes sure you
+              notice right away, even three windows over.
+            </li>
+            <li>
+              <b>Two sounds, two jobs.</b> Done means there's something to
+              review. Needs input means there's something to unblock. With a
+              different sound for each, you know which before you look.
+            </li>
+            <li>
+              <b>No tab-cycling.</b> Stop flipping between terminals to check
+              which session is still thinking. Work on something else and let
+              them call you.
+            </li>
+            <li>
+              <b>Out of the way.</b> One sound per reply, never per step. It
+              runs in the background, so a session never waits on it.
+            </li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <div class="two-up">
+            <div>
+              <h2>Pick your sounds</h2>
+              <p>
+                Choose two that sound nothing alike: one for done, one for needs
+                input. Ask by name, or describe it and Claude picks.
+              </p>
+              <dl class="commands">
+                <dt>/tada:sound done coin</dt>
+                <dd>Play coin when Claude finishes.</dd>
+                <dt>/tada:sound needs-input knock</dt>
+                <dd>Play knock when it needs permission.</dd>
+                <dt>/tada:sound needs-input off</dt>
+                <dd>Silence one event.</dd>
+                <dt>/tada:sound something goofy for done</dt>
+                <dd>Claude chooses for you.</dd>
+              </dl>
+            </div>
+            <div>
+              <h2>How it works</h2>
+              <ol class="flow">
+                <li>
+                  <b>Claude finishes</b
+                  ><span>The plugin's Stop hook plays your done sound.</span>
+                </li>
+                <li>
+                  <b>Claude asks</b
+                  ><span
+                    >A Notification hook plays your needs-input sound when a
+                    permission prompt appears.</span
+                  >
+                </li>
+                <li>
+                  <b>Claude keeps going</b
+                  ><span
+                    >Both hooks run in the background, so a sound never blocks
+                    or slows a session.</span
+                  >
+                </li>
+              </ol>
+              <p>
+                It runs only local scripts and your system's audio player, and
+                sends nothing anywhere. Works on macOS, Linux and Windows (with
+                Git Bash).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="your-sounds">
+          <h2>Bring your own sounds</h2>
+          <p>
+            Want your own dog, your kid yelling "all done!", or your team's
+            victory chant? Get the clip yourself, and tada plays it like a
+            built-in.
+          </p>
+          <ol class="steps">
+            <li>
+              <b>Get a clip.</b> Record one (a phone voice memo works), or
+              download one you have the right to use, like a CC0 sound from
+              <a href="https://freesound.org">Freesound</a> or a free effect
+              from <a href="https://pixabay.com/sound-effects/">Pixabay</a>. An
+              mp3, wav or m4a of a second or two is ideal.
+            </li>
+            <li>
+              <b>Add it.</b>
+              <code class="inline">/tada:sound add ~/Downloads/bark.mp3</code>,
+              or just tell Claude "add the bark I just downloaded".
+            </li>
+            <li>
+              <b>Pick it.</b>
+              <code class="inline">/tada:sound done bark</code>
+            </li>
+          </ol>
+          <p class="aside">
+            Your clips stay on your machine. tada never downloads anything.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          Code under the MIT licence. Every bundled sound is public domain
+          (CC0): synthesized from scratch, or recorded and given away by their
+          authors on Freesound and by Kenney.
+        </p>
+        <p>
+          <a
+            href="https://github.com/pjbiz/claude-tada/blob/main/sounds/CREDITS.md"
+            >Who made each sound</a
+          >
+          ·
+          <a href="https://github.com/pjbiz/claude-tada/issues"
+            >Report a problem</a
+          >
+        </p>
+        <p>
+          tada is an independent project, not affiliated with or endorsed by
+          Anthropic. Claude and Claude Code are trademarks of Anthropic.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      const SOUND_BASE = "sounds/";
+      const SOUNDS = [{"name": "tada", "kind": "done", "description": "Bell 'ta-da!': a pickup note, then a bright major chord. The default for done.", "group": "synth"}, {"name": "coin", "kind": "done", "description": "8-bit coin pickup: two quick chiptune notes.", "group": "synth"}, {"name": "level-up", "kind": "done", "description": "Chiptune level-up: a fast rising arpeggio.", "group": "synth"}, {"name": "power-up", "kind": "done", "description": "Rising chiptune power-up sweep with a wobble.", "group": "synth"}, {"name": "fanfare", "kind": "done", "description": "Brassy 'da-da-daaa!' fanfare.", "group": "synth"}, {"name": "marimba", "kind": "done", "description": "Three warm marimba notes going up.", "group": "synth"}, {"name": "kalimba", "kind": "done", "description": "Plinky thumb-piano phrase.", "group": "synth"}, {"name": "harp", "kind": "done", "description": "Harp glissando sweeping up a pentatonic scale.", "group": "synth"}, {"name": "ding", "kind": "done", "description": "One clear desk-bell ding.", "group": "synth"}, {"name": "doorbell", "kind": "done", "description": "Classic 'ding-dong' doorbell.", "group": "synth"}, {"name": "wind-chimes", "kind": "done", "description": "A breeze through high wind chimes.", "group": "synth"}, {"name": "sparkle", "kind": "done", "description": "Magic sparkle: a quick shimmer of falling notes.", "group": "synth"}, {"name": "success", "kind": "done", "description": "Soft two-note UI success chime.", "group": "synth"}, {"name": "champagne", "kind": "done", "description": "Cork pop, then a fizz.", "group": "synth"}, {"name": "drumroll", "kind": "done", "description": "Snare drum roll that lands on a cymbal crash.", "group": "synth"}, {"name": "cuckoo", "kind": "done", "description": "Cuckoo-clock call.", "group": "synth"}, {"name": "bird", "kind": "done", "description": "Little songbird chirps and a trill.", "group": "synth"}, {"name": "boing", "kind": "done", "description": "Cartoon spring 'boing'.", "group": "synth"}, {"name": "slide-whistle", "kind": "done", "description": "Goofy slide whistle going up and back down.", "group": "synth"}, {"name": "kazoo", "kind": "done", "description": "Kazoo 'ta-daaa!', buzzy and silly.", "group": "synth"}, {"name": "bubbles", "kind": "done", "description": "Three bubbly bloops.", "group": "synth"}, {"name": "robot", "kind": "done", "description": "Robot 'beep-boop-bop'.", "group": "synth"}, {"name": "hm", "kind": "nudge", "description": "Soft rising two-note chime, like a polite 'hm?'. The default for needs-input.", "group": "synth"}, {"name": "knock", "kind": "nudge", "description": "Knock knock on a wooden door.", "group": "synth"}, {"name": "sonar", "kind": "nudge", "description": "Submarine sonar ping with an echo.", "group": "synth"}, {"name": "blip", "kind": "nudge", "description": "Two short, quiet UI blips.", "group": "synth"}, {"name": "huh", "kind": "nudge", "description": "Cartoon 'huh?': a voice-like rising question.", "group": "synth"}, {"name": "glass-tap", "kind": "nudge", "description": "Two light taps on a glass.", "group": "synth"}, {"name": "triple-beep", "kind": "nudge", "description": "Three gentle beeps.", "group": "synth"}, {"name": "tick-tock", "kind": "nudge", "description": "A clock going tick-tock, tick-tock.", "group": "synth"}, {"name": "owl", "kind": "nudge", "description": "Soft owl 'hoo-hoo'.", "group": "synth"}, {"name": "ka-ching", "kind": "done", "description": "Cash register ka-ching. Money made.", "group": "recording"}, {"name": "toilet-flush", "kind": "done", "description": "A toilet flushing. Task: disposed of.", "group": "recording"}, {"name": "crowd-cheer", "kind": "done", "description": "A crowd cheering and clapping.", "group": "recording"}, {"name": "party-horn", "kind": "done", "description": "Party horn blower.", "group": "recording"}, {"name": "microwave", "kind": "done", "description": "Microwave beeping: your code is ready.", "group": "recording"}, {"name": "jackpot", "kind": "done", "description": "Slot machine paying out.", "group": "recording"}, {"name": "gong", "kind": "done", "description": "A big gong.", "group": "recording"}, {"name": "rubber-duck", "kind": "done", "description": "One squeeze of a rubber duck.", "group": "recording"}, {"name": "cow", "kind": "done", "description": "A cow mooing.", "group": "recording"}, {"name": "duck-quack", "kind": "done", "description": "A single duck quack.", "group": "recording"}, {"name": "typewriter-ding", "kind": "done", "description": "Typewriter bell, then the carriage return.", "group": "recording"}, {"name": "burp", "kind": "done", "description": "A satisfied belch.", "group": "recording"}, {"name": "fart", "kind": "done", "description": "A short, definite fart.", "group": "recording"}, {"name": "air-horn", "kind": "done", "description": "Air horn blast.", "group": "recording"}, {"name": "woohoo", "kind": "done", "description": "A man shouting 'woohoo!'", "group": "recording"}, {"name": "magic-wand", "kind": "done", "description": "Magic wand burst.", "group": "recording"}, {"name": "evil-laugh", "kind": "done", "description": "Evil 'mwahaha' laugh.", "group": "recording"}, {"name": "boxing-bell", "kind": "done", "description": "Boxing bell: end of the round.", "group": "recording"}, {"name": "sad-trombone", "kind": "done", "description": "Wah-wah-wah-waaah sad trombone. For when it 'worked'.", "group": "recording"}, {"name": "rooster", "kind": "nudge", "description": "Rooster crowing: wake up!", "group": "recording"}, {"name": "cat-meow", "kind": "nudge", "description": "A cat meowing for attention.", "group": "recording"}, {"name": "dog-bark", "kind": "nudge", "description": "A dog barking twice.", "group": "recording"}, {"name": "ahem", "kind": "nudge", "description": "Someone clearing their throat: ahem.", "group": "recording"}, {"name": "referee-whistle", "kind": "nudge", "description": "Referee whistle blow.", "group": "recording"}, {"name": "phone-ring", "kind": "nudge", "description": "One ring of an old landline phone.", "group": "recording"}, {"name": "bicycle-bell", "kind": "nudge", "description": "Bicycle bell: ring ring.", "group": "recording"}, {"name": "voice-congratulations", "kind": "done", "description": "A woman's voice: 'Congratulations!'", "group": "voice"}, {"name": "voice-mission-complete", "kind": "done", "description": "A man's voice: 'Mission completed.'", "group": "voice"}, {"name": "voice-objective-achieved", "kind": "done", "description": "A woman's voice: 'Objective achieved.'", "group": "voice"}, {"name": "voice-you-win", "kind": "done", "description": "A man's voice: 'You win!'", "group": "voice"}, {"name": "voice-new-highscore", "kind": "done", "description": "A woman's voice: 'New highscore!'", "group": "voice"}, {"name": "voice-level-up", "kind": "done", "description": "A man's voice: 'Level up!'", "group": "voice"}, {"name": "voice-hurry-up", "kind": "nudge", "description": "A woman's voice: 'Hurry up!'", "group": "voice"}, {"name": "voice-ready", "kind": "nudge", "description": "A man's voice: 'Ready?'", "group": "voice"}];
+      // The "yours" bank is empty slots that explain how to add a clip of your own.
+      const YOUR_SLOTS = Array.from({ length: 16 }, () => ({ isSlot: true }));
+      const PADS_PER_PAGE = 16;
+      const PAD_KEYS = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "q",
+        "w",
+        "e",
+        "r",
+        "a",
+        "s",
+        "d",
+        "f",
+        "z",
+        "x",
+        "c",
+        "v",
+      ];
+      const BANK_LABELS = {
+        synth: "synth",
+        recording: "real world",
+        voice: "voices",
+        yours: "yours",
+      };
+      const BANK_COLORS = {
+        synth: "var(--synth)",
+        recording: "var(--recording)",
+        voice: "var(--voice)",
+      };
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      const player = new Audio();
+      const padGrid = document.getElementById("pads");
+      const lcd = {
+        bank: document.getElementById("lcd-bank"),
+        event: document.getElementById("lcd-event"),
+        name: document.getElementById("lcd-name"),
+        description: document.getElementById("lcd-desc"),
+        command: document.getElementById("lcd-command"),
+      };
+      let currentBank = "synth";
+      let currentPage = 0;
+      let litPad = null;
+
+      function soundsInBank(bank) {
+        return bank === "yours"
+          ? YOUR_SLOTS
+          : SOUNDS.filter((sound) => sound.group === bank);
+      }
+
+      function pageCount(bank) {
+        return Math.max(
+          1,
+          Math.ceil(soundsInBank(bank).length / PADS_PER_PAGE),
+        );
+      }
+
+      function eventName(kind) {
+        return kind === "nudge" ? "needs-input" : "done";
+      }
+
+      function shortName(sound) {
+        return sound.name.replace(/^voice-/, "");
+      }
+
+      function showOnLcd(sound, bank) {
+        lcd.bank.textContent = `${BANK_LABELS[bank]} ${currentPage + 1}/${pageCount(bank)}`;
+        lcd.event.textContent = eventName(sound.kind);
+        lcd.name.textContent = sound.name;
+        lcd.description.textContent = sound.description;
+        lcd.command.textContent = `/tada:sound ${eventName(sound.kind)} ${sound.name}`;
+      }
+
+      function showYourSlotOnLcd() {
+        lcd.bank.textContent = "yours";
+        lcd.event.textContent = "empty";
+        lcd.name.textContent = "your sound here";
+        lcd.description.textContent =
+          "Record a clip, or download one you can use.";
+        lcd.command.textContent = "/tada:sound add ~/Downloads/clip.mp3";
+      }
+
+      function unlight() {
+        if (litPad) litPad.classList.remove("lit");
+        litPad = null;
+      }
+
+      function play(sound, pad) {
+        player.pause();
+        player.currentTime = 0;
+        player.src = SOUND_BASE + sound.name + ".wav";
+        player
+          .play()
+          .catch((error) => console.error("could not play", sound.name, error));
+        unlight();
+        if (pad) {
+          pad.classList.add("lit");
+          litPad = pad;
+        }
+        showOnLcd(sound, sound.group);
+      }
+
+      player.addEventListener("ended", unlight);
+
+      function buildPad(sound, index, bank) {
+        const pad = document.createElement("button");
+        pad.type = "button";
+        pad.className = "pad";
+        if (!sound) {
+          pad.disabled = true;
+          pad.setAttribute("aria-hidden", "true");
+          pad.tabIndex = -1;
+          return pad;
+        }
+        if (sound.isSlot) {
+          pad.classList.add("locked");
+          pad.innerHTML = `<span class="pad-name">+</span><span class="pad-foot"><span class="pad-key"></span></span>`;
+          pad.querySelector(".pad-key").textContent =
+            PAD_KEYS[index].toUpperCase();
+          pad.setAttribute(
+            "aria-label",
+            "Empty slot: add a clip of your own with /tada:sound add",
+          );
+          pad.addEventListener("click", () => {
+            unlight();
+            showYourSlotOnLcd();
+          });
+          return pad;
+        }
+        pad.dataset.kind = sound.kind;
+        pad.dataset.key = PAD_KEYS[index];
+        pad.style.setProperty("--lit", BANK_COLORS[bank] || "var(--pad)");
+        pad.innerHTML = `<span class="pad-name"></span><span class="pad-foot"><span class="pad-key"></span><span class="pad-kind"></span></span>`;
+        pad.querySelector(".pad-name").textContent = shortName(sound);
+        pad.querySelector(".pad-key").textContent =
+          PAD_KEYS[index].toUpperCase();
+        pad.setAttribute(
+          "aria-label",
+          `Play ${sound.name}: ${sound.description}`,
+        );
+        pad.addEventListener("click", () => play(sound, pad));
+        return pad;
+      }
+
+      function render() {
+        const sounds = soundsInBank(currentBank);
+        const pages = pageCount(currentBank);
+        if (currentPage >= pages) currentPage = 0;
+        const pageSounds = sounds.slice(
+          currentPage * PADS_PER_PAGE,
+          (currentPage + 1) * PADS_PER_PAGE,
+        );
+        unlight();
+        padGrid.replaceChildren(
+          ...Array.from({ length: PADS_PER_PAGE }, (_, index) =>
+            buildPad(pageSounds[index], index, currentBank),
+          ),
+        );
+        document
+          .querySelectorAll("[data-bank]")
+          .forEach((button) =>
+            button.setAttribute(
+              "aria-pressed",
+              String(button.dataset.bank === currentBank),
+            ),
+          );
+        document.querySelectorAll("[data-page]").forEach((button) => {
+          const page = Number(button.dataset.page);
+          button.hidden = page >= pages;
+          button.setAttribute("aria-pressed", String(page === currentPage));
+        });
+        if (currentBank === "yours") {
+          showYourSlotOnLcd();
+        } else {
+          lcd.bank.textContent = `${BANK_LABELS[currentBank]} ${currentPage + 1}/${pages}`;
+        }
+      }
+
+      document.querySelectorAll("[data-bank]").forEach((button) =>
+        button.addEventListener("click", () => {
+          currentBank = button.dataset.bank;
+          currentPage = 0;
+          render();
+        }),
+      );
+      document.querySelectorAll("[data-page]").forEach((button) =>
+        button.addEventListener("click", () => {
+          currentPage = Number(button.dataset.page);
+          render();
+        }),
+      );
+
+      // Switches the device to the sound's bank and page, then plays and lights its pad.
+      function playOnDevice(sound) {
+        currentBank = sound.group;
+        const indexInBank = soundsInBank(sound.group).indexOf(sound);
+        currentPage = Math.floor(indexInBank / PADS_PER_PAGE);
+        render();
+        play(sound, padGrid.children[indexInBank % PADS_PER_PAGE]);
+      }
+
+      document.getElementById("random-pad").addEventListener("click", () => {
+        playOnDevice(SOUNDS[Math.floor(Math.random() * SOUNDS.length)]);
+      });
+
+      const barkSound = SOUNDS.find((sound) => sound.name === "dog-bark");
+      const barkButton = document.getElementById("play-bark");
+      if (barkSound) {
+        barkButton.addEventListener("click", () => playOnDevice(barkSound));
+      } else {
+        console.error(
+          "dog-bark is missing from the sound list; hiding the bark button",
+        );
+        barkButton.hidden = true;
+      }
+
+      document.getElementById("stop-pad").addEventListener("click", () => {
+        player.pause();
+        unlight();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.metaKey || event.ctrlKey || event.altKey || event.repeat)
+          return;
+        const index = PAD_KEYS.indexOf(event.key.toLowerCase());
+        if (index === -1) return;
+        const pad = padGrid.children[index];
+        if (!pad || pad.disabled) return;
+        event.preventDefault();
+        pad.click();
+      });
+
+      async function copyText(text, button) {
+        const label = button.textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          button.textContent = "Copied";
+        } catch (error) {
+          console.error("clipboard write failed", error);
+          button.textContent = "Select and copy";
+        }
+        setTimeout(() => {
+          button.textContent = label;
+        }, 1600);
+      }
+
+      document
+        .getElementById("copy-install")
+        .addEventListener("click", (event) =>
+          copyText(
+            document.getElementById("install-commands").textContent,
+            event.currentTarget,
+          ),
+        );
+      document
+        .getElementById("copy-command")
+        .addEventListener("click", (event) =>
+          copyText(lcd.command.textContent, event.currentTarget),
+        );
+
+      render();
+
+      // One boot sweep across the pads on load, like hardware powering on.
+      if (!reduceMotion) {
+        Array.from(padGrid.children).forEach((pad, index) => {
+          if (pad.disabled) return;
+          setTimeout(() => pad.classList.add("booting"), 40 * index);
+          setTimeout(() => pad.classList.remove("booting"), 40 * index + 220);
+        });
+      }
+    </script>
+  </body>
+</html>

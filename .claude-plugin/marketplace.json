@@ -8,7 +8,7 @@
     {
       "name": "tada",
       "source": ".",
-      "description": "Plays a 'ta-da' when Claude Code finishes and a soft chime when it needs your permission."
+      "description": "Hear the moment any Claude Code session finishes or needs your permission."
     }
   ]
 }

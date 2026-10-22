@@ -12,7 +12,13 @@ if [ ! -f "$SOUND_FILE" ]; then
 fi
 
 play_on_linux() {
-  for player in paplay pw-play aplay; do
+  local players="paplay pw-play aplay"
+  # aplay reads only WAV; given an mp3 it plays loud static, so leave it out.
+  case "$SOUND_FILE" in
+    *.wav|*.WAV) ;;
+    *) players="paplay pw-play" ;;
+  esac
+  for player in $players; do
     if command -v "$player" >/dev/null 2>&1 && "$player" "$SOUND_FILE" 2>/dev/null; then
       return 0
     fi

@@ -24,7 +24,7 @@ resolve_sound_file() {
     "") ;;
     *)
       if is_library_sound "$choice"; then
-        echo "$TADA_LIBRARY_DIR/$choice.wav"
+        sound_file "$choice"
         return
       fi
       echo "play-sound.sh: no sound named '$choice' in $TADA_SETTINGS_FILE; using the default" >&2

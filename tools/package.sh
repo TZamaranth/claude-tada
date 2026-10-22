@@ -20,5 +20,10 @@ fi
 
 mkdir -p dist
 OUTPUT="dist/tada-v$VERSION.zip"
-git archive --format=zip --prefix=tada/ -o "$OUTPUT" HEAD
+# The zip carries the plugin only: the website, its images and the repo's dotfiles stay out.
+# (Excluded here rather than with export-ignore in .gitattributes, which Anthropic's
+# plugin directory refuses to validate.)
+git archive --format=zip --prefix=tada/ -o "$OUTPUT" HEAD -- . \
+  ':(exclude)index.html' ':(exclude)assets' ':(exclude)tools/site' \
+  ':(exclude).gitattributes' ':(exclude).gitignore'
 echo "$OUTPUT"
