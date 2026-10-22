@@ -1,31 +1,65 @@
-tada	done	Bell 'ta-da!': a pickup note, then a bright major chord. The default for done.
-coin	done	8-bit coin pickup: two quick chiptune notes.
-level-up	done	Chiptune level-up: a fast rising arpeggio.
-power-up	done	Rising chiptune power-up sweep with a wobble.
-fanfare	done	Brassy 'da-da-daaa!' fanfare.
-marimba	done	Three warm marimba notes going up.
-kalimba	done	Plinky thumb-piano phrase.
-harp	done	Harp glissando sweeping up a pentatonic scale.
-ding	done	One clear desk-bell ding.
-doorbell	done	Classic 'ding-dong' doorbell.
-wind-chimes	done	A breeze through high wind chimes.
-sparkle	done	Magic sparkle: a quick shimmer of falling notes.
-success	done	Soft two-note UI success chime.
-champagne	done	Cork pop, then a fizz.
-drumroll	done	Snare drum roll that lands on a cymbal crash.
-cuckoo	done	Cuckoo-clock call.
-bird	done	Little songbird chirps and a trill.
-boing	done	Cartoon spring 'boing'.
-slide-whistle	done	Goofy slide whistle going up and back down.
-kazoo	done	Kazoo 'ta-daaa!', buzzy and silly.
-bubbles	done	Three bubbly bloops.
-robot	done	Robot 'beep-boop-bop'.
-hm	nudge	Soft rising two-note chime, like a polite 'hm?'. The default for needs-input.
-knock	nudge	Knock knock on a wooden door.
-sonar	nudge	Submarine sonar ping with an echo.
-blip	nudge	Two short, quiet UI blips.
-huh	nudge	Cartoon 'huh?': a voice-like rising question.
-glass-tap	nudge	Two light taps on a glass.
-triple-beep	nudge	Three gentle beeps.
-tick-tock	nudge	A clock going tick-tock, tick-tock.
-owl	nudge	Soft owl 'hoo-hoo'.
+tada	done	Bell 'ta-da!': a pickup note, then a bright major chord. The default for done.	synth
+coin	done	8-bit coin pickup: two quick chiptune notes.	synth
+level-up	done	Chiptune level-up: a fast rising arpeggio.	synth
+power-up	done	Rising chiptune power-up sweep with a wobble.	synth
+fanfare	done	Brassy 'da-da-daaa!' fanfare.	synth
+marimba	done	Three warm marimba notes going up.	synth
+kalimba	done	Plinky thumb-piano phrase.	synth
+harp	done	Harp glissando sweeping up a pentatonic scale.	synth
+ding	done	One clear desk-bell ding.	synth
+doorbell	done	Classic 'ding-dong' doorbell.	synth
+wind-chimes	done	A breeze through high wind chimes.	synth
+sparkle	done	Magic sparkle: a quick shimmer of falling notes.	synth
+success	done	Soft two-note UI success chime.	synth
+champagne	done	Cork pop, then a fizz.	synth
+drumroll	done	Snare drum roll that lands on a cymbal crash.	synth
+cuckoo	done	Cuckoo-clock call.	synth
+bird	done	Little songbird chirps and a trill.	synth
+boing	done	Cartoon spring 'boing'.	synth
+slide-whistle	done	Goofy slide whistle going up and back down.	synth
+kazoo	done	Kazoo 'ta-daaa!', buzzy and silly.	synth
+bubbles	done	Three bubbly bloops.	synth
+robot	done	Robot 'beep-boop-bop'.	synth
+hm	nudge	Soft rising two-note chime, like a polite 'hm?'. The default for needs-input.	synth
+knock	nudge	Knock knock on a wooden door.	synth
+sonar	nudge	Submarine sonar ping with an echo.	synth
+blip	nudge	Two short, quiet UI blips.	synth
+huh	nudge	Cartoon 'huh?': a voice-like rising question.	synth
+glass-tap	nudge	Two light taps on a glass.	synth
+triple-beep	nudge	Three gentle beeps.	synth
+tick-tock	nudge	A clock going tick-tock, tick-tock.	synth
+owl	nudge	Soft owl 'hoo-hoo'.	synth
+ka-ching	done	Cash register ka-ching. Money made.	recording
+toilet-flush	done	A toilet flushing. Task: disposed of.	recording
+crowd-cheer	done	A crowd cheering and clapping.	recording
+party-horn	done	Party horn blower.	recording
+microwave	done	Microwave beeping: your code is ready.	recording
+jackpot	done	Slot machine paying out.	recording
+gong	done	A big gong.	recording
+rubber-duck	done	One squeeze of a rubber duck.	recording
+cow	done	A cow mooing.	recording
+duck-quack	done	A single duck quack.	recording
+typewriter-ding	done	Typewriter bell, then the carriage return.	recording
+burp	done	A satisfied belch.	recording
+fart	done	A short, definite fart.	recording
+air-horn	done	Air horn blast.	recording
+woohoo	done	A man shouting 'woohoo!'	recording
+magic-wand	done	Magic wand burst.	recording
+evil-laugh	done	Evil 'mwahaha' laugh.	recording
+boxing-bell	done	Boxing bell: end of the round.	recording
+sad-trombone	done	Wah-wah-wah-waaah sad trombone. For when it 'worked'.	recording
+rooster	nudge	Rooster crowing: wake up!	recording
+cat-meow	nudge	A cat meowing for attention.	recording
+dog-bark	nudge	A dog barking twice.	recording
+ahem	nudge	Someone clearing their throat: ahem.	recording
+referee-whistle	nudge	Referee whistle blow.	recording
+phone-ring	nudge	One ring of an old landline phone.	recording
+bicycle-bell	nudge	Bicycle bell: ring ring.	recording
+voice-congratulations	done	A woman's voice: 'Congratulations!'	voice
+voice-mission-complete	done	A man's voice: 'Mission completed.'	voice
+voice-objective-achieved	done	A woman's voice: 'Objective achieved.'	voice
+voice-you-win	done	A man's voice: 'You win!'	voice
+voice-new-highscore	done	A woman's voice: 'New highscore!'	voice
+voice-level-up	done	A man's voice: 'Level up!'	voice
+voice-hurry-up	nudge	A woman's voice: 'Hurry up!'	voice
+voice-ready	nudge	A man's voice: 'Ready?'	voice

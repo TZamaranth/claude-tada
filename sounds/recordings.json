@@ -1,0 +1,672 @@
+[
+  {
+    "name": "ka-ching",
+    "kind": "done",
+    "group": "recording",
+    "description": "Cash register ka-ching. Money made.",
+    "source": {
+      "type": "freesound",
+      "id": "209578",
+      "title": "Cash Register Purchase",
+      "author": "Zott820",
+      "page": "https://freesound.org/people/Zott820/sounds/209578/",
+      "audio": "https://cdn.freesound.org/previews/209/209578_2558531-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      1.0
+    ]
+  },
+  {
+    "name": "toilet-flush",
+    "kind": "done",
+    "group": "recording",
+    "description": "A toilet flushing. Task: disposed of.",
+    "source": {
+      "type": "freesound",
+      "id": "274448",
+      "title": "Toilet Flushing",
+      "author": "lorenzgillner",
+      "page": "https://freesound.org/people/lorenzgillner/sounds/274448/",
+      "audio": "https://cdn.freesound.org/previews/274/274448_5169846-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      2.6
+    ],
+    "fade_out": 0.6
+  },
+  {
+    "name": "crowd-cheer",
+    "kind": "done",
+    "group": "recording",
+    "description": "A crowd cheering and clapping.",
+    "source": {
+      "type": "freesound",
+      "id": "221567",
+      "title": "cheering and clapping crowd 2",
+      "author": "AlaskaRobotics",
+      "page": "https://freesound.org/people/AlaskaRobotics/sounds/221567/",
+      "audio": "https://cdn.freesound.org/previews/221/221567_1282865-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0.4,
+      3.0
+    ],
+    "fade_out": 0.8
+  },
+  {
+    "name": "party-horn",
+    "kind": "done",
+    "group": "recording",
+    "description": "Party horn blower.",
+    "source": {
+      "type": "freesound",
+      "id": "170583",
+      "title": "Party horn.wav",
+      "author": "audiosmedia",
+      "page": "https://freesound.org/people/audiosmedia/sounds/170583/",
+      "audio": "https://cdn.freesound.org/previews/170/170583_1146698-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      1.0
+    ]
+  },
+  {
+    "name": "microwave",
+    "kind": "done",
+    "group": "recording",
+    "description": "Microwave beeping: your code is ready.",
+    "source": {
+      "type": "freesound",
+      "id": "219506",
+      "title": "Microwave Bleeps 01.wav",
+      "author": "JarredGibb",
+      "page": "https://freesound.org/people/JarredGibb/sounds/219506/",
+      "audio": "https://cdn.freesound.org/previews/219/219506_4056007-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      2.5
+    ],
+    "loudness": 0.8
+  },
+  {
+    "name": "jackpot",
+    "kind": "done",
+    "group": "recording",
+    "description": "Slot machine paying out.",
+    "source": {
+      "type": "freesound",
+      "id": "361346",
+      "title": "slot machine payout.wav",
+      "author": "jack126guy",
+      "page": "https://freesound.org/people/jack126guy/sounds/361346/",
+      "audio": "https://cdn.freesound.org/previews/361/361346_5506271-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      2.5
+    ],
+    "fade_out": 0.5
+  },
+  {
+    "name": "gong",
+    "kind": "done",
+    "group": "recording",
+    "description": "A big gong.",
+    "source": {
+      "type": "freesound",
+      "id": "121800",
+      "title": "gong.WAV",
+      "author": "BOSS MUSIC",
+      "page": "https://freesound.org/people/BOSS%20MUSIC/sounds/121800/",
+      "audio": "https://cdn.freesound.org/previews/121/121800_1525789-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0.05,
+      3.0
+    ],
+    "fade_out": 1.0
+  },
+  {
+    "name": "rubber-duck",
+    "kind": "done",
+    "group": "recording",
+    "description": "One squeeze of a rubber duck.",
+    "source": {
+      "type": "freesound",
+      "id": "403507",
+      "title": "Rubber-Duck_Squeezes.wav",
+      "author": "LamaMakesMusic",
+      "page": "https://freesound.org/people/LamaMakesMusic/sounds/403507/",
+      "audio": "https://cdn.freesound.org/previews/403/403507_3012788-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0.2,
+      0.9
+    ]
+  },
+  {
+    "name": "cow",
+    "kind": "done",
+    "group": "recording",
+    "description": "A cow mooing.",
+    "source": {
+      "type": "freesound",
+      "id": "177253",
+      "title": "Cow moos",
+      "author": "JosephSardin",
+      "page": "https://freesound.org/people/JosephSardin/sounds/177253/",
+      "audio": "https://cdn.freesound.org/previews/177/177253_276010-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      1.0,
+      2.4
+    ],
+    "fade_out": 0.25
+  },
+  {
+    "name": "duck-quack",
+    "kind": "done",
+    "group": "recording",
+    "description": "A single duck quack.",
+    "source": {
+      "type": "freesound",
+      "id": "418509",
+      "title": "single quack from a duck",
+      "author": "Mikes-MultiMedia",
+      "page": "https://freesound.org/people/Mikes-MultiMedia/sounds/418509/",
+      "audio": "https://cdn.freesound.org/previews/418/418509_5632532-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      0.5
+    ]
+  },
+  {
+    "name": "typewriter-ding",
+    "kind": "done",
+    "group": "recording",
+    "description": "Typewriter bell, then the carriage return.",
+    "source": {
+      "type": "freesound",
+      "id": "345955",
+      "title": "Typewriter bell & carriage reset",
+      "author": "knufds",
+      "page": "https://freesound.org/people/knufds/sounds/345955/",
+      "audio": "https://cdn.freesound.org/previews/345/345955_191884-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      2.6
+    ]
+  },
+  {
+    "name": "burp",
+    "kind": "done",
+    "group": "recording",
+    "description": "A satisfied belch.",
+    "source": {
+      "type": "freesound",
+      "id": "221516",
+      "title": "belch",
+      "author": "AlaskaRobotics",
+      "page": "https://freesound.org/people/AlaskaRobotics/sounds/221516/",
+      "audio": "https://cdn.freesound.org/previews/221/221516_1282865-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0.25,
+      1.5
+    ],
+    "loudness": 0.9
+  },
+  {
+    "name": "fart",
+    "kind": "done",
+    "group": "recording",
+    "description": "A short, definite fart.",
+    "source": {
+      "type": "freesound",
+      "id": "249583",
+      "title": "Short, definite fart",
+      "author": "ycbcr",
+      "page": "https://freesound.org/people/ycbcr/sounds/249583/",
+      "audio": "https://cdn.freesound.org/previews/249/249583_1181971-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      0.25
+    ],
+    "fade_out": 0.03,
+    "loudness": 0.9
+  },
+  {
+    "name": "air-horn",
+    "kind": "done",
+    "group": "recording",
+    "description": "Air horn blast.",
+    "source": {
+      "type": "freesound",
+      "id": "414208",
+      "title": "Airhorn",
+      "author": "jacksonacademyashmore",
+      "page": "https://freesound.org/people/jacksonacademyashmore/sounds/414208/",
+      "audio": "https://cdn.freesound.org/previews/414/414208_6938106-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      1.5
+    ],
+    "loudness": 0.85
+  },
+  {
+    "name": "woohoo",
+    "kind": "done",
+    "group": "recording",
+    "description": "A man shouting 'woohoo!'",
+    "source": {
+      "type": "freesound",
+      "id": "468898",
+      "title": "woohoo",
+      "author": "unfa",
+      "page": "https://freesound.org/people/unfa/sounds/468898/",
+      "audio": "https://cdn.freesound.org/previews/468/468898_1038806-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0.05,
+      1.6
+    ]
+  },
+  {
+    "name": "magic-wand",
+    "kind": "done",
+    "group": "recording",
+    "description": "Magic wand burst.",
+    "source": {
+      "type": "freesound",
+      "id": "214455",
+      "title": "magic burst",
+      "author": "DAN2008",
+      "page": "https://freesound.org/people/DAN2008/sounds/214455/",
+      "audio": "https://cdn.freesound.org/previews/214/214455_2992529-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      1.2
+    ]
+  },
+  {
+    "name": "evil-laugh",
+    "kind": "done",
+    "group": "recording",
+    "description": "Evil 'mwahaha' laugh.",
+    "source": {
+      "type": "freesound",
+      "id": "478934",
+      "title": "evil laugh.wav",
+      "author": "kintana24",
+      "page": "https://freesound.org/people/kintana24/sounds/478934/",
+      "audio": "https://cdn.freesound.org/previews/478/478934_4638708-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      2.3
+    ]
+  },
+  {
+    "name": "boxing-bell",
+    "kind": "done",
+    "group": "recording",
+    "description": "Boxing bell: end of the round.",
+    "source": {
+      "type": "freesound",
+      "id": "438626",
+      "title": "G39-09-Boxing Fight Bell.wav",
+      "author": "craigsmith",
+      "page": "https://freesound.org/people/craigsmith/sounds/438626/",
+      "audio": "https://cdn.freesound.org/previews/438/438626_2524442-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      10.5,
+      12.4
+    ],
+    "fade_out": 0.6
+  },
+  {
+    "name": "sad-trombone",
+    "kind": "done",
+    "group": "recording",
+    "description": "Wah-wah-wah-waaah sad trombone. For when it 'worked'.",
+    "source": {
+      "type": "freesound",
+      "id": "175409",
+      "title": "wah wah sad trombone.wav",
+      "author": "kirbydx",
+      "page": "https://freesound.org/people/kirbydx/sounds/175409/",
+      "audio": "https://cdn.freesound.org/previews/175/175409_1326576-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      4.8
+    ],
+    "fade_out": 0.6
+  },
+  {
+    "name": "rooster",
+    "kind": "nudge",
+    "group": "recording",
+    "description": "Rooster crowing: wake up!",
+    "source": {
+      "type": "freesound",
+      "id": "435508",
+      "title": "Rooster Crow 1",
+      "author": "BenjaminNelan",
+      "page": "https://freesound.org/people/BenjaminNelan/sounds/435508/",
+      "audio": "https://cdn.freesound.org/previews/435/435508_1196020-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      2.0
+    ]
+  },
+  {
+    "name": "cat-meow",
+    "kind": "nudge",
+    "group": "recording",
+    "description": "A cat meowing for attention.",
+    "source": {
+      "type": "freesound",
+      "id": "412017",
+      "title": "cat meow short",
+      "author": "skymary",
+      "page": "https://freesound.org/people/skymary/sounds/412017/",
+      "audio": "https://cdn.freesound.org/previews/412/412017_3652520-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0.2,
+      1.1
+    ]
+  },
+  {
+    "name": "dog-bark",
+    "kind": "nudge",
+    "group": "recording",
+    "description": "A dog barking twice.",
+    "source": {
+      "type": "freesound",
+      "id": "386766",
+      "title": "Dog_Barking.wav",
+      "author": "ken788",
+      "page": "https://freesound.org/people/ken788/sounds/386766/",
+      "audio": "https://cdn.freesound.org/previews/386/386766_5768130-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0.5,
+      1.4
+    ]
+  },
+  {
+    "name": "ahem",
+    "kind": "nudge",
+    "group": "recording",
+    "description": "Someone clearing their throat: ahem.",
+    "source": {
+      "type": "freesound",
+      "id": "436107",
+      "title": "Ahem 1",
+      "author": "DrFortyseven",
+      "page": "https://freesound.org/people/DrFortyseven/sounds/436107/",
+      "audio": "https://cdn.freesound.org/previews/436/436107_729251-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      0.5
+    ],
+    "fade_out": 0.05
+  },
+  {
+    "name": "referee-whistle",
+    "kind": "nudge",
+    "group": "recording",
+    "description": "Referee whistle blow.",
+    "source": {
+      "type": "freesound",
+      "id": "218318",
+      "title": "Referee whistle blow, gymnasium.wav",
+      "author": "SpliceSound",
+      "page": "https://freesound.org/people/SpliceSound/sounds/218318/",
+      "audio": "https://cdn.freesound.org/previews/218/218318_1480854-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      1.2
+    ],
+    "fade_out": 0.5,
+    "loudness": 0.85
+  },
+  {
+    "name": "phone-ring",
+    "kind": "nudge",
+    "group": "recording",
+    "description": "One ring of an old landline phone.",
+    "source": {
+      "type": "freesound",
+      "id": "275163",
+      "title": "Phone Old Landline Ringing",
+      "author": "robotjay",
+      "page": "https://freesound.org/people/robotjay/sounds/275163/",
+      "audio": "https://cdn.freesound.org/previews/275/275163_476277-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      1.2
+    ],
+    "fade_out": 0.15
+  },
+  {
+    "name": "bicycle-bell",
+    "kind": "nudge",
+    "group": "recording",
+    "description": "Bicycle bell: ring ring.",
+    "source": {
+      "type": "freesound",
+      "id": "188032",
+      "title": "Rotating Bicycle Bell",
+      "author": "AntumDeluge",
+      "page": "https://freesound.org/people/AntumDeluge/sounds/188032/",
+      "audio": "https://cdn.freesound.org/previews/188/188032_3403708-hq.mp3",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      1.2
+    ]
+  },
+  {
+    "name": "voice-congratulations",
+    "kind": "done",
+    "group": "voice",
+    "description": "A woman's voice: 'Congratulations!'",
+    "source": {
+      "type": "kenney",
+      "title": "Voiceover Pack #1: Female/congratulations.ogg",
+      "author": "Kenney (kenney.nl), voice by Giselle",
+      "page": "https://kenney.nl/assets/voiceover-pack",
+      "pack": "https://kenney.nl/media/pages/assets/voiceover-pack/3f7f168698-1677589897/kenney_voiceover-pack.zip",
+      "file": "Female/congratulations.ogg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      null
+    ],
+    "fade_out": 0.03
+  },
+  {
+    "name": "voice-mission-complete",
+    "kind": "done",
+    "group": "voice",
+    "description": "A man's voice: 'Mission completed.'",
+    "source": {
+      "type": "kenney",
+      "title": "Voiceover Pack #1: Male/mission_completed.ogg",
+      "author": "Kenney (kenney.nl), voice by Jeffrey M. Smith",
+      "page": "https://kenney.nl/assets/voiceover-pack",
+      "pack": "https://kenney.nl/media/pages/assets/voiceover-pack/3f7f168698-1677589897/kenney_voiceover-pack.zip",
+      "file": "Male/mission_completed.ogg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      null
+    ],
+    "fade_out": 0.03
+  },
+  {
+    "name": "voice-objective-achieved",
+    "kind": "done",
+    "group": "voice",
+    "description": "A woman's voice: 'Objective achieved.'",
+    "source": {
+      "type": "kenney",
+      "title": "Voiceover Pack #1: Female/objective_achieved.ogg",
+      "author": "Kenney (kenney.nl), voice by Giselle",
+      "page": "https://kenney.nl/assets/voiceover-pack",
+      "pack": "https://kenney.nl/media/pages/assets/voiceover-pack/3f7f168698-1677589897/kenney_voiceover-pack.zip",
+      "file": "Female/objective_achieved.ogg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      null
+    ],
+    "fade_out": 0.03
+  },
+  {
+    "name": "voice-you-win",
+    "kind": "done",
+    "group": "voice",
+    "description": "A man's voice: 'You win!'",
+    "source": {
+      "type": "kenney",
+      "title": "Voiceover Pack #1: Male/you_win.ogg",
+      "author": "Kenney (kenney.nl), voice by Jeffrey M. Smith",
+      "page": "https://kenney.nl/assets/voiceover-pack",
+      "pack": "https://kenney.nl/media/pages/assets/voiceover-pack/3f7f168698-1677589897/kenney_voiceover-pack.zip",
+      "file": "Male/you_win.ogg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      null
+    ],
+    "fade_out": 0.03
+  },
+  {
+    "name": "voice-new-highscore",
+    "kind": "done",
+    "group": "voice",
+    "description": "A woman's voice: 'New highscore!'",
+    "source": {
+      "type": "kenney",
+      "title": "Voiceover Pack #1: Female/new_highscore.ogg",
+      "author": "Kenney (kenney.nl), voice by Giselle",
+      "page": "https://kenney.nl/assets/voiceover-pack",
+      "pack": "https://kenney.nl/media/pages/assets/voiceover-pack/3f7f168698-1677589897/kenney_voiceover-pack.zip",
+      "file": "Female/new_highscore.ogg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      null
+    ],
+    "fade_out": 0.03
+  },
+  {
+    "name": "voice-level-up",
+    "kind": "done",
+    "group": "voice",
+    "description": "A man's voice: 'Level up!'",
+    "source": {
+      "type": "kenney",
+      "title": "Voiceover Pack #1: Male/level_up.ogg",
+      "author": "Kenney (kenney.nl), voice by Jeffrey M. Smith",
+      "page": "https://kenney.nl/assets/voiceover-pack",
+      "pack": "https://kenney.nl/media/pages/assets/voiceover-pack/3f7f168698-1677589897/kenney_voiceover-pack.zip",
+      "file": "Male/level_up.ogg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      null
+    ],
+    "fade_out": 0.03
+  },
+  {
+    "name": "voice-hurry-up",
+    "kind": "nudge",
+    "group": "voice",
+    "description": "A woman's voice: 'Hurry up!'",
+    "source": {
+      "type": "kenney",
+      "title": "Voiceover Pack #1: Female/hurry_up.ogg",
+      "author": "Kenney (kenney.nl), voice by Giselle",
+      "page": "https://kenney.nl/assets/voiceover-pack",
+      "pack": "https://kenney.nl/media/pages/assets/voiceover-pack/3f7f168698-1677589897/kenney_voiceover-pack.zip",
+      "file": "Female/hurry_up.ogg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      null
+    ],
+    "fade_out": 0.03
+  },
+  {
+    "name": "voice-ready",
+    "kind": "nudge",
+    "group": "voice",
+    "description": "A man's voice: 'Ready?'",
+    "source": {
+      "type": "kenney",
+      "title": "Voiceover Pack #1: Male/ready.ogg",
+      "author": "Kenney (kenney.nl), voice by Jeffrey M. Smith",
+      "page": "https://kenney.nl/assets/voiceover-pack",
+      "pack": "https://kenney.nl/media/pages/assets/voiceover-pack/3f7f168698-1677589897/kenney_voiceover-pack.zip",
+      "file": "Male/ready.ogg",
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    "trim": [
+      0,
+      null
+    ],
+    "fade_out": 0.03
+  }
+]

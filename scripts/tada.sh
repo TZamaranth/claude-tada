@@ -15,14 +15,22 @@ fail() {
   exit 1
 }
 
+list_sound_group() {
+  local group_name="$1" heading="$2"
+  echo "$heading"
+  awk -F'\t' -v group="$group_name" '
+    { sub(/\r$/, "") }
+    $4 == group { printf "  %-26s %-13s %s\n", $1, ($2 == "nudge" ? "[needs-input]" : "[done]"), $3 }
+  ' "$TADA_CATALOG"
+  echo
+}
+
 list_sounds() {
-  echo "Celebratory (good for done):"
-  awk -F'\t' '$2 == "done" { printf "  %-14s %s\n", $1, $3 }' "$TADA_CATALOG"
-  echo
-  echo "Nudges (good for needs-input):"
-  awk -F'\t' '$2 == "nudge" { printf "  %-14s %s\n", $1, $3 }' "$TADA_CATALOG"
-  echo
-  echo "Any sound works for either event. Also: random (a different one each time), off (silent)."
+  list_sound_group synth "Chimes and synths:"
+  list_sound_group recording "Real-world sounds:"
+  list_sound_group voice "Voices:"
+  echo "[done] / [needs-input] is the suggested event; any sound works for either."
+  echo "Also: random (a different one each time), off (silent)."
 }
 
 describe_event_setting() {

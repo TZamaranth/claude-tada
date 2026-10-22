@@ -26,7 +26,8 @@
   button { font: inherit; cursor: pointer; border-radius: 999px; border: 1px solid var(--border);
     background: var(--surface); color: var(--text); padding: 6px 14px; }
   button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); font-weight: 600; }
-  h2 { font-size: 1.15rem; margin: 32px 0 2px; }
+  h2 { font-size: 1.15rem; margin: 32px 0 2px; display: flex; gap: 12px; align-items: center; }
+  h2 button { font-size: 0.8rem; font-weight: 500; padding: 3px 10px; }
   .section-note { color: var(--muted); margin: 0 0 12px; font-size: 0.95rem; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
   .card { display: flex; gap: 12px; align-items: flex-start; text-align: left; width: 100%;
@@ -46,15 +47,15 @@
 <body>
 <main>
   <h1>tada sounds</h1>
-  <p class="lede">31 sounds for Claude Code. Click one to hear it. All synthesized from scratch and free to use (CC0).</p>
+  <p class="lede">65 sounds for Claude Code. Click one to hear it. Every one is public domain (CC0) and free to use.</p>
   <div class="toolbar">
     <button class="primary" id="play-all">Play all</button>
     <button id="stop">Stop</button>
     <span>Pick one in Claude Code: <code>/tada:sound done coin</code></span>
   </div>
-  <h2>Celebratory</h2>
-  <p class="section-note">Good for when Claude finishes.</p>
-  <div class="grid">
+  <h2>Chimes and synths <button data-play-group="synth">Play these 31</button></h2>
+  <p class="section-note">Synthesized from scratch by tools/make-sounds.py.</p>
+  <div class="grid" data-group="synth">
     <button class="card" data-sound="tada"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">tada<span class="tag">default for done</span></span><span class="card-description">Bell &#x27;ta-da!&#x27;: a pickup note, then a bright major chord. The default for done.</span><span class="card-command">/tada:sound done tada</span></span></button>
     <button class="card" data-sound="coin"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">coin</span><span class="card-description">8-bit coin pickup: two quick chiptune notes.</span><span class="card-command">/tada:sound done coin</span></span></button>
     <button class="card" data-sound="level-up"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">level-up</span><span class="card-description">Chiptune level-up: a fast rising arpeggio.</span><span class="card-command">/tada:sound done level-up</span></span></button>
@@ -77,10 +78,6 @@
     <button class="card" data-sound="kazoo"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">kazoo</span><span class="card-description">Kazoo &#x27;ta-daaa!&#x27;, buzzy and silly.</span><span class="card-command">/tada:sound done kazoo</span></span></button>
     <button class="card" data-sound="bubbles"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">bubbles</span><span class="card-description">Three bubbly bloops.</span><span class="card-command">/tada:sound done bubbles</span></span></button>
     <button class="card" data-sound="robot"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">robot</span><span class="card-description">Robot &#x27;beep-boop-bop&#x27;.</span><span class="card-command">/tada:sound done robot</span></span></button>
-  </div>
-  <h2>Nudges</h2>
-  <p class="section-note">Good for when Claude needs your permission.</p>
-  <div class="grid">
     <button class="card" data-sound="hm"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">hm<span class="tag">default for needs-input</span></span><span class="card-description">Soft rising two-note chime, like a polite &#x27;hm?&#x27;. The default for needs-input.</span><span class="card-command">/tada:sound needs-input hm</span></span></button>
     <button class="card" data-sound="knock"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">knock</span><span class="card-description">Knock knock on a wooden door.</span><span class="card-command">/tada:sound needs-input knock</span></span></button>
     <button class="card" data-sound="sonar"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">sonar</span><span class="card-description">Submarine sonar ping with an echo.</span><span class="card-command">/tada:sound needs-input sonar</span></span></button>
@@ -91,7 +88,49 @@
     <button class="card" data-sound="tick-tock"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">tick-tock</span><span class="card-description">A clock going tick-tock, tick-tock.</span><span class="card-command">/tada:sound needs-input tick-tock</span></span></button>
     <button class="card" data-sound="owl"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">owl</span><span class="card-description">Soft owl &#x27;hoo-hoo&#x27;.</span><span class="card-command">/tada:sound needs-input owl</span></span></button>
   </div>
-  <footer>Sounds are generated by <code>tools/make-sounds.py</code> in the repository. Code MIT, sounds CC0.</footer>
+  <h2>Real-world sounds <button data-play-group="recording">Play these 26</button></h2>
+  <p class="section-note">Real recordings, released as CC0 by the people who made them.</p>
+  <div class="grid" data-group="recording">
+    <button class="card" data-sound="ka-ching"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">ka-ching</span><span class="card-description">Cash register ka-ching. Money made.</span><span class="card-command">/tada:sound done ka-ching</span></span></button>
+    <button class="card" data-sound="toilet-flush"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">toilet-flush</span><span class="card-description">A toilet flushing. Task: disposed of.</span><span class="card-command">/tada:sound done toilet-flush</span></span></button>
+    <button class="card" data-sound="crowd-cheer"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">crowd-cheer</span><span class="card-description">A crowd cheering and clapping.</span><span class="card-command">/tada:sound done crowd-cheer</span></span></button>
+    <button class="card" data-sound="party-horn"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">party-horn</span><span class="card-description">Party horn blower.</span><span class="card-command">/tada:sound done party-horn</span></span></button>
+    <button class="card" data-sound="microwave"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">microwave</span><span class="card-description">Microwave beeping: your code is ready.</span><span class="card-command">/tada:sound done microwave</span></span></button>
+    <button class="card" data-sound="jackpot"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">jackpot</span><span class="card-description">Slot machine paying out.</span><span class="card-command">/tada:sound done jackpot</span></span></button>
+    <button class="card" data-sound="gong"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">gong</span><span class="card-description">A big gong.</span><span class="card-command">/tada:sound done gong</span></span></button>
+    <button class="card" data-sound="rubber-duck"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">rubber-duck</span><span class="card-description">One squeeze of a rubber duck.</span><span class="card-command">/tada:sound done rubber-duck</span></span></button>
+    <button class="card" data-sound="cow"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">cow</span><span class="card-description">A cow mooing.</span><span class="card-command">/tada:sound done cow</span></span></button>
+    <button class="card" data-sound="duck-quack"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">duck-quack</span><span class="card-description">A single duck quack.</span><span class="card-command">/tada:sound done duck-quack</span></span></button>
+    <button class="card" data-sound="typewriter-ding"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">typewriter-ding</span><span class="card-description">Typewriter bell, then the carriage return.</span><span class="card-command">/tada:sound done typewriter-ding</span></span></button>
+    <button class="card" data-sound="burp"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">burp</span><span class="card-description">A satisfied belch.</span><span class="card-command">/tada:sound done burp</span></span></button>
+    <button class="card" data-sound="fart"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">fart</span><span class="card-description">A short, definite fart.</span><span class="card-command">/tada:sound done fart</span></span></button>
+    <button class="card" data-sound="air-horn"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">air-horn</span><span class="card-description">Air horn blast.</span><span class="card-command">/tada:sound done air-horn</span></span></button>
+    <button class="card" data-sound="woohoo"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">woohoo</span><span class="card-description">A man shouting &#x27;woohoo!&#x27;</span><span class="card-command">/tada:sound done woohoo</span></span></button>
+    <button class="card" data-sound="magic-wand"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">magic-wand</span><span class="card-description">Magic wand burst.</span><span class="card-command">/tada:sound done magic-wand</span></span></button>
+    <button class="card" data-sound="evil-laugh"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">evil-laugh</span><span class="card-description">Evil &#x27;mwahaha&#x27; laugh.</span><span class="card-command">/tada:sound done evil-laugh</span></span></button>
+    <button class="card" data-sound="boxing-bell"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">boxing-bell</span><span class="card-description">Boxing bell: end of the round.</span><span class="card-command">/tada:sound done boxing-bell</span></span></button>
+    <button class="card" data-sound="sad-trombone"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">sad-trombone</span><span class="card-description">Wah-wah-wah-waaah sad trombone. For when it &#x27;worked&#x27;.</span><span class="card-command">/tada:sound done sad-trombone</span></span></button>
+    <button class="card" data-sound="rooster"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">rooster</span><span class="card-description">Rooster crowing: wake up!</span><span class="card-command">/tada:sound needs-input rooster</span></span></button>
+    <button class="card" data-sound="cat-meow"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">cat-meow</span><span class="card-description">A cat meowing for attention.</span><span class="card-command">/tada:sound needs-input cat-meow</span></span></button>
+    <button class="card" data-sound="dog-bark"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">dog-bark</span><span class="card-description">A dog barking twice.</span><span class="card-command">/tada:sound needs-input dog-bark</span></span></button>
+    <button class="card" data-sound="ahem"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">ahem</span><span class="card-description">Someone clearing their throat: ahem.</span><span class="card-command">/tada:sound needs-input ahem</span></span></button>
+    <button class="card" data-sound="referee-whistle"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">referee-whistle</span><span class="card-description">Referee whistle blow.</span><span class="card-command">/tada:sound needs-input referee-whistle</span></span></button>
+    <button class="card" data-sound="phone-ring"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">phone-ring</span><span class="card-description">One ring of an old landline phone.</span><span class="card-command">/tada:sound needs-input phone-ring</span></span></button>
+    <button class="card" data-sound="bicycle-bell"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">bicycle-bell</span><span class="card-description">Bicycle bell: ring ring.</span><span class="card-command">/tada:sound needs-input bicycle-bell</span></span></button>
+  </div>
+  <h2>Voices <button data-play-group="voice">Play these 8</button></h2>
+  <p class="section-note">Announcer lines from Kenney's CC0 Voiceover Pack.</p>
+  <div class="grid" data-group="voice">
+    <button class="card" data-sound="voice-congratulations"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">voice-congratulations</span><span class="card-description">A woman&#x27;s voice: &#x27;Congratulations!&#x27;</span><span class="card-command">/tada:sound done voice-congratulations</span></span></button>
+    <button class="card" data-sound="voice-mission-complete"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">voice-mission-complete</span><span class="card-description">A man&#x27;s voice: &#x27;Mission completed.&#x27;</span><span class="card-command">/tada:sound done voice-mission-complete</span></span></button>
+    <button class="card" data-sound="voice-objective-achieved"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">voice-objective-achieved</span><span class="card-description">A woman&#x27;s voice: &#x27;Objective achieved.&#x27;</span><span class="card-command">/tada:sound done voice-objective-achieved</span></span></button>
+    <button class="card" data-sound="voice-you-win"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">voice-you-win</span><span class="card-description">A man&#x27;s voice: &#x27;You win!&#x27;</span><span class="card-command">/tada:sound done voice-you-win</span></span></button>
+    <button class="card" data-sound="voice-new-highscore"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">voice-new-highscore</span><span class="card-description">A woman&#x27;s voice: &#x27;New highscore!&#x27;</span><span class="card-command">/tada:sound done voice-new-highscore</span></span></button>
+    <button class="card" data-sound="voice-level-up"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">voice-level-up</span><span class="card-description">A man&#x27;s voice: &#x27;Level up!&#x27;</span><span class="card-command">/tada:sound done voice-level-up</span></span></button>
+    <button class="card" data-sound="voice-hurry-up"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">voice-hurry-up</span><span class="card-description">A woman&#x27;s voice: &#x27;Hurry up!&#x27;</span><span class="card-command">/tada:sound needs-input voice-hurry-up</span></span></button>
+    <button class="card" data-sound="voice-ready"><span class="play-icon" aria-hidden="true">&#9654;</span><span><span class="card-name">voice-ready</span><span class="card-description">A man&#x27;s voice: &#x27;Ready?&#x27;</span><span class="card-command">/tada:sound needs-input voice-ready</span></span></button>
+  </div>
+  <footer>Who made each recording: <code>sounds/CREDITS.md</code> in the repository. Code MIT, sounds CC0.</footer>
 </main>
 <script>
   const cards = [...document.querySelectorAll(".card")];
@@ -114,7 +153,10 @@
   });
 
   cards.forEach((card) => card.addEventListener("click", () => { queue = []; play(card); }));
-  document.getElementById("play-all").addEventListener("click", () => { queue = cards.slice(1); play(cards[0]); });
+  function playInOrder(sequence) { queue = sequence.slice(1); play(sequence[0]); }
+  document.getElementById("play-all").addEventListener("click", () => playInOrder(cards));
+  document.querySelectorAll("[data-play-group]").forEach((button) => button.addEventListener("click", () =>
+    playInOrder([...document.querySelectorAll(`.grid[data-group="${button.dataset.playGroup}"] .card`)])));
   document.getElementById("stop").addEventListener("click", () => { queue = []; player.pause(); markPlaying(null); });
 </script>
 </body>

@@ -1,7 +1,7 @@
 {
   "name": "tada",
-  "version": "1.1.0",
-  "description": "Plays a 'ta-da' when Claude Code finishes and a soft chime when it needs your permission. 31 sounds to pick from, or bring your own.",
+  "version": "1.2.0",
+  "description": "Plays a 'ta-da' when Claude Code finishes and a soft chime when it needs your permission. 65 sounds (chimes, real-world sounds, voices) to pick from, or bring your own.",
   "author": {
     "name": "pjbiz"
   },
