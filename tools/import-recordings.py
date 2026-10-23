@@ -31,7 +31,7 @@ REPOSITORY_DIRECTORY = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = REPOSITORY_DIRECTORY / "sounds" / "recordings.json"
 SOUNDS_DIRECTORY = REPOSITORY_DIRECTORY / "sounds"
 CACHE_DIRECTORY = REPOSITORY_DIRECTORY / ".cache" / "recordings"
-USER_AGENT = "claude-tada sound importer (https://github.com/pjbiz/claude-tada)"
+USER_AGENT = "claude-tada sound importer (https://github.com/TZamaranth/claude-tada)"
 
 TARGET_LOUDNESS = 0.14  # RMS of the audible part; keeps a duck quack and an air horn comparable
 PEAK_LIMIT = 0.89  # about -1 dBFS

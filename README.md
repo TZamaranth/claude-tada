@@ -1,6 +1,6 @@
 # tada
 
-[![Too many Claude sessions? Have them bark at you when they're done.](assets/social-preview.png)](https://pjbiz.github.io/claude-tada/)
+[![Too many Claude sessions? Have them bark at you when they're done.](assets/social-preview.png)](https://tzamaranth.github.io/claude-tada/)
 
 **Too many Claude sessions? Have them bark at you when they're done.**
 
@@ -10,11 +10,11 @@ permission, you hear a different one, so it doesn't sit blocked for twenty minut
 while you're in another window. No more cycling through terminals to see which
 session is still thinking.
 
-[**Play all 65 sounds**](https://pjbiz.github.io/claude-tada/) &nbsp;·&nbsp;
+[**Play all 65 sounds**](https://tzamaranth.github.io/claude-tada/) &nbsp;·&nbsp;
 [Install](#install) &nbsp;·&nbsp;
-[Download the zip](https://github.com/pjbiz/claude-tada/releases/latest)
+[Download the zip](https://github.com/TZamaranth/claude-tada/releases/latest)
 
-[![Release](https://img.shields.io/github/v/release/pjbiz/claude-tada?label=release)](https://github.com/pjbiz/claude-tada/releases/latest)
+[![Release](https://img.shields.io/github/v/release/TZamaranth/claude-tada?label=release)](https://github.com/TZamaranth/claude-tada/releases/latest)
 [![Code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
 [![Sounds: CC0](https://img.shields.io/badge/sounds-CC0-green)](sounds/CREDITS.md)
 ![macOS | Windows | Linux](https://img.shields.io/badge/runs_on-macOS_%7C_Windows_%7C_Linux-lightgrey)
@@ -24,7 +24,7 @@ session is still thinking.
 In Claude Code:
 
 ```
-/plugin marketplace add pjbiz/claude-tada
+/plugin marketplace add TZamaranth/claude-tada
 /plugin install tada@tada
 ```
 
@@ -39,12 +39,12 @@ terminal and project. Sessions that were already open pick it up after
 **From a terminal:**
 
 ```bash
-claude plugin marketplace add pjbiz/claude-tada
+claude plugin marketplace add TZamaranth/claude-tada
 claude plugin install tada@tada
 ```
 
 **From the download:** get `tada-v*.zip` from the
-[latest release](https://github.com/pjbiz/claude-tada/releases/latest), unzip it
+[latest release](https://github.com/TZamaranth/claude-tada/releases/latest), unzip it
 somewhere permanent (you get a `tada` folder), then in Claude Code:
 
 ```
@@ -54,7 +54,7 @@ somewhere permanent (you get a `tada` folder), then in Claude Code:
 
 On Windows, use the full path: `/plugin marketplace add C:\Users\you\tada`.
 
-**For one session only:** `claude --plugin-dir path/to/tada-v1.3.0.zip`.
+**For one session only:** `claude --plugin-dir path/to/tada-v1.3.1.zip`.
 
 </details>
 
@@ -163,7 +163,7 @@ system's audio player. It reads and writes `~/.claude/tada.conf` and
 `~/.claude/sounds/`, collects nothing, and makes no network requests.
 
 **Something's wrong. Where do I report it?**
-[Open an issue](https://github.com/pjbiz/claude-tada/issues) on GitHub.
+[Open an issue](https://github.com/TZamaranth/claude-tada/issues) on GitHub.
 
 ## Requirements
 

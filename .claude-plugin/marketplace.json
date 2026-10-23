@@ -2,7 +2,7 @@
   "name": "tada",
   "description": "Ta-da sound when Claude Code finishes, soft chime when it needs permission.",
   "owner": {
-    "name": "pjbiz"
+    "name": "TZamaranth"
   },
   "plugins": [
     {

@@ -1,12 +1,12 @@
 {
   "name": "tada",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Plays a sound the moment any Claude Code session finishes, and a different one when a session needs your permission. Made for running several sessions at once. 65 sounds to pick from, or add clips of your own.",
   "author": {
-    "name": "pjbiz"
+    "name": "TZamaranth"
   },
-  "homepage": "https://github.com/pjbiz/claude-tada",
-  "repository": "https://github.com/pjbiz/claude-tada",
+  "homepage": "https://github.com/TZamaranth/claude-tada",
+  "repository": "https://github.com/TZamaranth/claude-tada",
   "license": "MIT",
   "keywords": ["sound", "notification", "hooks", "chime"]
 }

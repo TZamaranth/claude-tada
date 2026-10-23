@@ -4,7 +4,7 @@ Fills in the sound list from sounds/catalog.tsv (written by make-sounds.py, so
 run that first).
 Usage: python tools/make-site.py
 The page plays sounds/<name>.wav by relative path, so GitHub Pages serves it
-from the repository root (https://pjbiz.github.io/claude-tada/). To try it
+from the repository root (https://tzamaranth.github.io/claude-tada/). To try it
 locally, open index.html from inside the repository.
 """
 
