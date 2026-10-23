@@ -1,4 +1,5 @@
 #!/bin/bash
+(set -o igncr) 2>/dev/null && set -o igncr # tolerate Windows line endings (older Git Bash), no-op elsewhere
 # Plays one audio file with whatever player this OS has. Usage: play-file.sh <path>
 # Falls back to a terminal bell when there is no player or no file.
 

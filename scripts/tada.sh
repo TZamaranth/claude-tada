@@ -1,4 +1,5 @@
 #!/bin/bash
+(set -o igncr) 2>/dev/null && set -o igncr # tolerate Windows line endings (older Git Bash), no-op elsewhere
 # Browse, preview and pick tada sounds, and add your own.
 #
 #   tada.sh list                              every sound, with a description

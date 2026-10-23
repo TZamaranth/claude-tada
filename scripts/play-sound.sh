@@ -1,4 +1,5 @@
 #!/bin/bash
+(set -o igncr) 2>/dev/null && set -o igncr # tolerate Windows line endings (older Git Bash), no-op elsewhere
 # Hook entry point: plays the sound chosen for an event. Usage: play-sound.sh done|needs-input
 # See lib.sh for how the file is chosen. Never fails the hook.
 
