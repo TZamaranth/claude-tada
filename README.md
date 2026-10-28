@@ -54,7 +54,7 @@ somewhere permanent (you get a `tada` folder), then in Claude Code:
 
 On Windows, use the full path: `/plugin marketplace add C:\Users\you\tada`.
 
-**For one session only:** `claude --plugin-dir path/to/tada-v1.3.2.zip`.
+**For one session only:** `claude --plugin-dir path/to/tada-v1.3.3.zip`.
 
 </details>
 

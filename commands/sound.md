@@ -1,7 +1,7 @@
 ---
 description: Browse, preview and pick the tada sounds, or add your own
 argument-hint: "[list | play <name> | done <name> | needs-input <name> | add <file> [name] | anything, e.g. 'something goofy for done']"
-allowed-tools: Bash(bash:*)
+allowed-tools: Bash(bash "${CLAUDE_PLUGIN_ROOT}/scripts/tada.sh":*)
 ---
 
 Help the user pick the sounds the tada plugin plays. The tool is:
